@@ -15,8 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
+    # Panneau d'administration Django (interface web de gestion des données)
     path('admin/', admin.site.urls),
+
+    # Toutes les routes de l'API EFG Learning sont accessibles sous /api/
+    # include() délègue la suite de l'URL au fichier ElearningApp/urls.py
+    # namespace='elearning' permet d'utiliser : reverse('elearning:register')
+    # app_name = 'elearning' est déjà défini dans ElearningApp/urls.py
+    # → pas besoin de répéter namespace= ici (Django l'utilise automatiquement)
+    path('api/', include('ElearningApp.urls')),
 ]

@@ -3,6 +3,10 @@
 import os
 import sys
 
+# Ajoute le répertoire parent (racine du projet) au PYTHONPATH
+# pour que Django trouve ElearningApp qui est un niveau au-dessus
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 
 def main():
     """Run administrative tasks."""
